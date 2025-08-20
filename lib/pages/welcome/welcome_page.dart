@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_app/pages/home/home_page.dart';
+import 'package:flutter_movie_app/pages/List/list_page.dart';
 import 'package:lottie/lottie.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -29,7 +29,7 @@ class _WelcomePageState extends State<WelcomePage>
         /// 현재 페이즈를 스택에서 pushReplacement 하여
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           /// HomePage 로 전환 => pushReplacement 는 뒤로가기시 웰컴으로 안 돌아옴
-          builder: (context) => HomePage(),
+          builder: (context) => ListPage(),
         ));
       }
     });
