@@ -6,7 +6,18 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Image.asset(
+              'assets/logo.png',
+              height: 69,
+              width: 69,
+            ),
+          ],
+        ),
+      ),
       body: ListView(
         children: [
           Column(
