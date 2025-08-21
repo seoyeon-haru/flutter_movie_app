@@ -51,10 +51,11 @@ class _WelcomePageState extends State<WelcomePage>
           height: 500,
           child: Lottie.asset('assets/Movie.json',
               // 재생/정지/진행률을 제어
-              controller: _controller, 
+              controller: _controller,
+
               /// onLoaded 애니메이션 리소스가 메모리에 로드된 순간 콜백
               onLoaded: (composition) {
-                // Lottie 길이를 컨트롤러에 동일하게 설정
+            // Lottie 길이를 컨트롤러에 동일하게 설정
             _controller.duration = composition.duration;
             // 처음부터 끝까지 1회 재생 시작
             _controller.forward();

@@ -23,7 +23,6 @@ class ListPage extends StatelessWidget {
         ),
       ),
       body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 20),
         children: [
           TrendingList(),
           SizedBox(height: 10),
@@ -34,8 +33,6 @@ class ListPage extends StatelessWidget {
           TopRatedList(),
           SizedBox(height: 10),
           UpcomingList(),
-          SizedBox(height: 10),
-          BottomMyTab(),
         ],
       ),
     );

@@ -5,14 +5,26 @@ class PopularList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: [Text('인기순')],
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            children: [
+              Text(
+                '인기순',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+              ),
+            ],
+          ),
         ),
         SizedBox(height: 10),
         SizedBox(
           // 가로 스크롤 시 높이 지정 필요
           height: 180,
           child: ListView.separated(
+            padding: EdgeInsets.symmetric(horizontal: 20),
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return Container(
