@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_app/pages/detail/detail_page.dart';
 
 class NowPlayingList extends StatelessWidget {
   @override
