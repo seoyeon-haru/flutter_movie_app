@@ -86,7 +86,7 @@ class MovieContent extends StatelessWidget {
     return Container(
       width: 150,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.white.withOpacity(0.9),
       ),
     );
   }
