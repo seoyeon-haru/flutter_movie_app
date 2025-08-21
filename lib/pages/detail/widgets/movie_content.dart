@@ -81,7 +81,8 @@ class MovieContent extends StatelessWidget {
       ),
     );
   }
-
+ 
+ // 영화 제작사
   Container showCompany() {
     return Container(
       width: 150,
@@ -91,6 +92,7 @@ class MovieContent extends StatelessWidget {
     );
   }
 
+// 영화 흥행정보
   Container rate(String num, String content) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
@@ -106,6 +108,7 @@ class MovieContent extends StatelessWidget {
     );
   }
 
+// 영화 장르
   Container genre(String des) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10),
