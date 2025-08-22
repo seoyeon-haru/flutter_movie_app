@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_app/pages/List/Widgets/bottom_my_tab.dart';
 import 'package:flutter_movie_app/pages/List/Widgets/popular_list.dart';
 import 'package:flutter_movie_app/pages/List/Widgets/now_playing_list.dart';
 import 'package:flutter_movie_app/pages/List/Widgets/top_rated_list.dart';
@@ -24,15 +23,15 @@ class ListPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          TrendingList(),
+          TrendingList(heroTag: '가장인기있는'),
           SizedBox(height: 10),
-          NowPlayingList(),
+          NowPlayingList(heroTag: '현재상영중'),
           SizedBox(height: 10),
-          PopularList(),
+          PopularList(heroTag: '인기순'),
           SizedBox(height: 10),
-          TopRatedList(),
+          TopRatedList(heroTag: '평점높은순'),
           SizedBox(height: 10),
-          UpcomingList(),
+          UpcomingList(heroTag: '개봉예정'),
         ],
       ),
     );

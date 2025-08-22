@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/pages/detail/detail_page.dart';
 
 class TrendingList extends StatelessWidget {
+  TrendingList({required this.heroTag});
+  final String heroTag;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,12 +26,12 @@ class TrendingList extends StatelessWidget {
             onTap: () {
               Navigator.push(context, MaterialPageRoute(
                 builder: (context) {
-                  return DetailPage();
+                  return DetailPage(heroTag: '가장인기있는');
                 },
               ));
             },
             child: Hero(
-              tag: 'movie',
+              tag: '가장인기있는',
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Container(

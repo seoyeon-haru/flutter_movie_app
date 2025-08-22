@@ -3,7 +3,10 @@ import 'package:flutter_movie_app/pages/detail/widgets/movie_content.dart';
 import 'package:flutter_movie_app/pages/detail/widgets/movie_image.dart';
 
 class DetailPage extends StatelessWidget {
- 
+  DetailPage({required this.heroTag});
+  final String heroTag;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +26,7 @@ class DetailPage extends StatelessWidget {
         children: [
           Column(
             children: [
-              MovieImage(),
+              MovieImage(heroTag: heroTag),
               SizedBox(height: 10),
               MovieContent(),
             ],
