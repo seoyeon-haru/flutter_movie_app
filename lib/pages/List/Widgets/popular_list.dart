@@ -37,12 +37,15 @@ class PopularList extends StatelessWidget {
                   children: [
                     Align(
                       alignment: Alignment.centerRight,
-                      child: Container(
-                        width: 130,
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Container(
+                            width: 130,
+                            color: Colors.grey,
+                            child: Image.network(
+                              'https://picsum.photos/400/500',
+                              fit: BoxFit.cover,
+                            )),
                       ),
                     ),
                     Positioned(

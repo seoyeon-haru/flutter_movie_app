@@ -27,12 +27,15 @@ class TopRatedList extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20),
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return Container(
-                width: 130,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(10),
-                ),
+              return ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Container(
+                    width: 130,
+                    color: Colors.grey,
+                    child: Image.network(
+                      'https://picsum.photos/400/500',
+                      fit: BoxFit.cover,
+                    )),
               );
             },
             separatorBuilder: (context, index) => SizedBox(width: 10),

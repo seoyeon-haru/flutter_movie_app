@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/pages/detail/detail_page.dart';
 
 class TrendingList extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,12 +30,16 @@ class TrendingList extends StatelessWidget {
             },
             child: Hero(
               tag: 'movie',
-              child: Container(
-                width: double.infinity,
-                height: 400,
-                decoration: BoxDecoration(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Container(
+                  width: double.infinity,
+                  height: 400,
                   color: Colors.grey,
-                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    'https://picsum.photos/400/500',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),

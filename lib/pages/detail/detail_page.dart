@@ -3,6 +3,7 @@ import 'package:flutter_movie_app/pages/detail/widgets/movie_content.dart';
 import 'package:flutter_movie_app/pages/detail/widgets/movie_image.dart';
 
 class DetailPage extends StatelessWidget {
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
