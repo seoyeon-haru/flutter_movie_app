@@ -15,22 +15,22 @@ class MovieDataSourceImpl implements MovieDataSource {
   }
 
   @override
-  Future<MovieResponseDto?> fetchNowPlayingMovies() async {
-    return movieResponseDto;
+  Future<List<MovieResponseDto>?> fetchNowPlayingMovies() async {
+    return [movieResponseDto];
   }
 
   @override
-  Future<MovieResponseDto?> fetchPopularMovies() async {
-    return movieResponseDto;
+  Future<List<MovieResponseDto>?> fetchPopularMovies() async {
+    return [movieResponseDto];
   }
 
   @override
-  Future<MovieResponseDto?> fetchTopRatedMovies() async {
-    return movieResponseDto;
+  Future<List<MovieResponseDto>?> fetchTopRatedMovies() async {
+    return [movieResponseDto];
   }
 
   @override
-  Future<MovieResponseDto?> fetchUpComingMovies() async {
-    return movieResponseDto;
+  Future<List<MovieResponseDto>?> fetchUpComingMovies() async {
+    return [movieResponseDto];
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter_movie_app/data/data_source/movie_data_source.dart';
+import 'package:flutter_movie_app/data/dto/movie_detail_dto.dart';
 import 'package:flutter_movie_app/domain/entity/movie_entity.dart';
 import 'package:flutter_movie_app/domain/entity/movie_detail_entity.dart';
 import 'package:flutter_movie_app/domain/repository/movie_repository.dart';
@@ -13,22 +14,23 @@ class MovieRepositoryImpl implements MovieRepository {
     if (result == null) {
       return null;
     }
-    return result.results.map(
-      (e) => MovieDetailEntity(
-        budget: e.budget,
-        genres: e.genres,
-        id: e.id,
-        productionCompanies: e.productionCompanies,
-        overview: e.overview,
-        popularity: e.popularity,
-        releaseDate: e.releaseDate,
-        revenue: e.revenue,
-        runtime: e.runtime,
-        tagline: e.tagline,
-        title: e.title,
-        voteAverage: e.voteAverage,
-        voteCount: e.voteCount,
-      ),
+    return MovieDetailEntity(
+      budget: result.budget,
+      genres: (result.genres.map((g) => g.name).toList()),
+      id: result.id,
+      productionCompanies: (result.productionCompanies
+          .map((c) => c.logoPath ?? c.name)
+          .whereType<String>()
+          .toList()),
+      overview: result.overview,
+      popularity: result.popularity,
+      releaseDate: result.releaseDate,
+      revenue: result.revenue,
+      runtime: result.runtime,
+      tagline: result.tagline,
+      title: result.title,
+      voteAverage: result.voteAverage,
+      voteCount: result.voteCount,
     );
   }
 
@@ -38,7 +40,7 @@ class MovieRepositoryImpl implements MovieRepository {
     if (result == null) {
       return null;
     }
-    return result.results
+    return result
         .map(
           (e) => MovieEntity(
             id: e.id,
@@ -54,7 +56,7 @@ class MovieRepositoryImpl implements MovieRepository {
     if (result == null) {
       return null;
     }
-    return result.results
+    return result
         .map(
           (e) => MovieEntity(
             id: e.id,
@@ -70,7 +72,7 @@ class MovieRepositoryImpl implements MovieRepository {
     if (result == null) {
       return null;
     }
-    return result.results
+    return result
         .map(
           (e) => MovieEntity(
             id: e.id,
@@ -86,7 +88,7 @@ class MovieRepositoryImpl implements MovieRepository {
     if (result == null) {
       return null;
     }
-    return result.results
+    return result
         .map(
           (e) => MovieEntity(
             id: e.id,

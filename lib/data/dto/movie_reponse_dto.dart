@@ -78,7 +78,6 @@ class MovieResponseDto {
         voteCount: json["vote_count"],
       );
 
-  get results => null;
 
   Map<String, dynamic> toJson() => {
         "adult": adult,

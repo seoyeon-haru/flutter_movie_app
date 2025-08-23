@@ -186,6 +186,7 @@ class MovieDetailDto {
 
   get results => null;
 
+
     Map<String, dynamic> toJson() => {
         "adult": adult,
         "backdrop_path": backdropPath,
