@@ -1,4 +1,4 @@
-class MovieDetail {
+class MovieDetailEntity {
   /// 영화의 예산
   final int budget;
 
@@ -38,7 +38,7 @@ class MovieDetail {
   /// 영화에 대한 총 투표 수
   final int voteCount;
 
-  MovieDetail({
+  MovieDetailEntity({
     required this.budget,
     required this.genres,
     required this.id,

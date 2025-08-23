@@ -184,6 +184,8 @@ class MovieDetailDto {
         voteCount: json["vote_count"],
     );
 
+  get results => null;
+
     Map<String, dynamic> toJson() => {
         "adult": adult,
         "backdrop_path": backdropPath,
