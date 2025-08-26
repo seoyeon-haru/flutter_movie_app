@@ -17,8 +17,7 @@ void main() {
     fakeResponseDto = FakeMovieResponseDto();
     fakeDetailDto = FakeMovieDetailDto();
     dataSource = MovieDataSourceImpl(
-      movieResponseDto: fakeResponseDto,
-      movieDetailDto: fakeDetailDto,
+   
     );
   });
 

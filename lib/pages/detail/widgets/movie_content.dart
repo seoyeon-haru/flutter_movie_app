@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_app/pages/detail/detail_view_model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MovieContent extends StatelessWidget {
+class MovieContent extends ConsumerWidget {
+  MovieContent(this.state);
+  DetailState state;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -11,31 +15,36 @@ class MovieContent extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Moana 2',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              Expanded(
+                child: Text(
+                  state.detailMovie?.title ?? '',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
               ),
-              Text('2024-11-27'),
+              Text('${state.detailMovie?.releaseDate ?? ''}'),
             ],
           ),
-          Text('The ocean is calling them back.'),
-          Text('100분'),
+          Text(state.detailMovie?.tagline ?? ''),
+          Text('${state.detailMovie?.runtime ?? 0}분'),
           SizedBox(height: 5),
           Divider(thickness: 1),
-          Row(
-            children: [
-              genre('Animation'),
-              SizedBox(width: 5),
-              genre('Adventure'),
-              SizedBox(width: 5),
-              genre('Family'),
-              SizedBox(width: 5),
-              genre('Comedy'),
-            ],
+          SizedBox(
+            height: 36,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: state.detailMovie?.genres.length ?? 0,
+              separatorBuilder: (context, index) => SizedBox(width: 5),
+              itemBuilder: (context, index) {
+                final movie = state.detailMovie!.genres[index];
+                final String label = (movie is String)
+                    ? movie
+                    : ((movie as dynamic).name ?? movie.toString());
+                return genre(label);
+              },
+            ),
           ),
           Divider(thickness: 1),
-          Text(
-              'After receiving an unexpeced call from her wayfinding ancestors, Moana journeys alingside Maui and a new crew to the far seas of Oceania and into dangerous, long-lost waters for an adventure unlike anything she`s ever faced.'),
+          Text(state.detailMovie?.overview ?? ''),
           Divider(thickness: 1),
           SizedBox(height: 10),
           Text(
@@ -47,47 +56,50 @@ class MovieContent extends StatelessWidget {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                rate('6.949', '평점'),
+                rate('${state.detailMovie?.voteAverage}', '평점'),
                 SizedBox(width: 10),
-                rate('331', '평점투표수'),
+                rate('${state.detailMovie?.voteCount}', '평점투표수'),
                 SizedBox(width: 10),
-                rate('5466.535', '인기점수'),
+                rate('${state.detailMovie?.popularity}', '인기점수'),
                 SizedBox(width: 10),
-                rate('150000000', '예산'),
+                rate('${state.detailMovie?.budget}', '예산'),
                 SizedBox(width: 10),
-                rate('423586580', '수익'),
+                rate('${state.detailMovie?.revenue}', '수익'),
               ],
             ),
           ),
           SizedBox(height: 20),
           SizedBox(
             height: 70,
-            child: ListView(
+            child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              children: [
-                showCompany(),
-                SizedBox(width: 10),
-                showCompany(),
-                SizedBox(width: 10),
-                showCompany(),
-                SizedBox(width: 10),
-                showCompany(),
-                SizedBox(width: 10),
-                showCompany(),
-              ],
+              itemCount: state.detailMovie?.productionCompanies.length ?? 0,
+              separatorBuilder: (context, index) => SizedBox(width: 10),
+              itemBuilder: (context, index) {
+                final logo = state.detailMovie?.productionCompanies[index];
+                final String comLogo = (logo is String)
+                    ? logo
+                    : ((logo as dynamic).name ?? logo.toString());
+                return showCompany(comLogo);
+              },
             ),
           ),
         ],
       ),
     );
   }
- 
- // 영화 제작사
-  Container showCompany() {
+
+  // 영화 제작사
+  Container showCompany(String des) {
     return Container(
-      width: 150,
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.9),
+      ),
+      child: Center(
+        child: Text(
+          des,
+          style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_app/pages/List/list_view_model.dart';
 import 'package:flutter_movie_app/pages/detail/detail_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class UpcomingList extends StatelessWidget {
+class UpcomingList extends ConsumerWidget {
   UpcomingList({required this.heroTag});
   final String heroTag;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final result = ref.watch(listViewModelProvider);
     return Column(
       children: [
         Padding(
@@ -30,13 +33,14 @@ class UpcomingList extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20),
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
+              final movie = result.upComing[index];
               return ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
-                        return DetailPage(heroTag: '개봉예정-$index');
+                        return DetailPage(heroTag: '개봉예정-$index', id: movie.id, posterPath: movie.posterPath);
                       },
                     ));
                   },
@@ -46,7 +50,7 @@ class UpcomingList extends StatelessWidget {
                         width: 130,
                         color: Colors.grey,
                         child: Image.network(
-                          'https://picsum.photos/400/500',
+                          'https://image.tmdb.org/t/p/w500${movie.posterPath}',
                           fit: BoxFit.cover,
                         )),
                   ),
@@ -54,7 +58,7 @@ class UpcomingList extends StatelessWidget {
               );
             },
             separatorBuilder: (context, index) => SizedBox(width: 10),
-            itemCount: 20,
+            itemCount: result.upComing.length,
           ),
         ),
       ],

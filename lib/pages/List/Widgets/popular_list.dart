@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_app/pages/List/list_view_model.dart';
 import 'package:flutter_movie_app/pages/detail/detail_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class PopularList extends StatelessWidget {
-    PopularList({required this.heroTag});
+class PopularList extends ConsumerWidget {
+  PopularList({required this.heroTag});
   final String heroTag;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final result = ref.watch(listViewModelProvider);
     return Column(
       children: [
         Padding(
@@ -34,6 +37,7 @@ class PopularList extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20),
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
+              final movie = result.popular[index];
               return SizedBox(
                 width: 150,
                 child: Stack(
@@ -44,9 +48,11 @@ class PopularList extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder:(context) {
-                              return DetailPage(heroTag: '인기순-$index');
-                            },));
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) {
+                                return DetailPage(heroTag: '인기순-$index', id: movie.id, posterPath: movie.posterPath);
+                              },
+                            ));
                           },
                           child: Hero(
                             tag: '인기순-$index',
@@ -54,7 +60,7 @@ class PopularList extends StatelessWidget {
                                 width: 130,
                                 color: Colors.grey,
                                 child: Image.network(
-                                  'https://picsum.photos/400/500',
+                                  'https://image.tmdb.org/t/p/w500${movie.posterPath}',
                                   fit: BoxFit.cover,
                                 )),
                           ),
@@ -77,7 +83,7 @@ class PopularList extends StatelessWidget {
               );
             },
             separatorBuilder: (context, index) => SizedBox(width: 10),
-            itemCount: 20,
+            itemCount: result.popular.length,
           ),
         ),
       ],

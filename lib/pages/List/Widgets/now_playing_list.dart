@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_app/pages/List/list_view_model.dart';
 import 'package:flutter_movie_app/pages/detail/detail_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class NowPlayingList extends StatelessWidget {
+class NowPlayingList extends ConsumerWidget {
   NowPlayingList({required this.heroTag});
   final String heroTag;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final result = ref.watch(listViewModelProvider);
     return Column(
       children: [
         Padding(
@@ -30,12 +33,13 @@ class NowPlayingList extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20),
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
+              final movie = result.nowPlayingMovies[index];
               return ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder:(context) {
-                      return DetailPage(heroTag:'현재상영중-$index');
+                      return DetailPage(heroTag:'현재상영중-$index', id: movie.id, posterPath: movie.posterPath);
                     },));
                   },
                   child: Hero(
@@ -44,7 +48,7 @@ class NowPlayingList extends StatelessWidget {
                         width: 130,
                         color: Colors.grey,
                         child: Image.network(
-                          'https://picsum.photos/400/500',
+                         'https://image.tmdb.org/t/p/w500${movie.posterPath}',
                           fit: BoxFit.cover,
                         )),
                   ),
@@ -52,7 +56,7 @@ class NowPlayingList extends StatelessWidget {
               );
             },
             separatorBuilder: (context, index) => SizedBox(width: 10),
-            itemCount: 20,
+            itemCount: result.nowPlayingMovies.length,
           ),
         ),
       ],

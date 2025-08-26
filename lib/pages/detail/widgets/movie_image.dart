@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MovieImage extends StatelessWidget {
-  MovieImage({required this.heroTag});
+  MovieImage({required this.heroTag, required this.posterPath});
   final String heroTag;
+  String posterPath;
   @override
   Widget build(BuildContext context) {
     return Hero(
@@ -13,7 +14,7 @@ class MovieImage extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image.network(
-              'https://picsum.photos/400/500',
+              'https://image.tmdb.org/t/p/w500$posterPath',
               fit: BoxFit.cover,
             ),
           )),

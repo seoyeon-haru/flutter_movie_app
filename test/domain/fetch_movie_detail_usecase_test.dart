@@ -27,7 +27,7 @@ void main() {
         productionCompanies: ['productionCompanies'],
         overview: 'overview',
         popularity: 788.7078,
-        releaseDate: DateTime.parse("2025-05-17"),
+        releaseDate: 'releaseDate',
         revenue: 596513515,
         runtime: 170,
         tagline: 'tagline',

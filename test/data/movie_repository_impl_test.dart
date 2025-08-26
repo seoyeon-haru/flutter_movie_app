@@ -18,24 +18,25 @@ void main() {
 
   test('MovieRepositoryImpl test : fetchNowPlaying', () async {
     // 가짜 클래스 세팅
-    when(() => fakeMovieDataSource!.fetchNowPlayingMovies()).thenAnswer(
-      (_) async => [MovieResponseDto(
-        adult: false,
-        backdropPath: 'backdropPath',
-        genreIds: [28, 12, 53],
-        id: 575265,
-        originalLanguage: 'originalLanguage',
-        originalTitle: 'originalTitle',
-        overview: 'overview',
-        popularity: 788.7078,
-        posterPath: 'posterPath',
-        releaseDate: DateTime.parse("2025-05-17"),
-        title: 'title',
-        video: false,
-        voteAverage: 7.23,
-        voteCount: 1240,
-      ),]
-    );
+    when(() => fakeMovieDataSource!.fetchNowPlayingMovies())
+        .thenAnswer((_) async => [
+              MovieResponseDto(
+                adult: false,
+                backdropPath: 'backdropPath',
+                genreIds: [28, 12, 53],
+                id: 575265,
+                originalLanguage: 'originalLanguage',
+                originalTitle: 'originalTitle',
+                overview: 'overview',
+                popularity: 788.7078,
+                posterPath: 'posterPath',
+                releaseDate: 'releaseDate',
+                title: 'title',
+                video: false,
+                voteAverage: 7.23,
+                voteCount: 1240,
+              ),
+            ]);
 
     final result = await movieRepositoryImpl!.fetchNowPlayingMovies();
     expect(result, isNotNull);
@@ -45,24 +46,25 @@ void main() {
 
   test('MovieRepositoryImpl test : fetchPopular', () async {
     // 가짜 클래스 세팅
-    when(() => fakeMovieDataSource!.fetchPopularMovies()).thenAnswer(
-      (_) async =>[ MovieResponseDto(
-        adult: false,
-        backdropPath: 'backdropPath',
-        genreIds: [28, 12, 53],
-        id: 575265,
-        originalLanguage: 'originalLanguage',
-        originalTitle: 'originalTitle',
-        overview: 'overview',
-        popularity: 788.7078,
-        posterPath: 'posterPath',
-        releaseDate: DateTime.parse("2025-05-17"),
-        title: 'title',
-        video: false,
-        voteAverage: 7.23,
-        voteCount: 1240,
-      ),]
-    );
+    when(() => fakeMovieDataSource!.fetchPopularMovies())
+        .thenAnswer((_) async => [
+              MovieResponseDto(
+                adult: false,
+                backdropPath: 'backdropPath',
+                genreIds: [28, 12, 53],
+                id: 575265,
+                originalLanguage: 'originalLanguage',
+                originalTitle: 'originalTitle',
+                overview: 'overview',
+                popularity: 788.7078,
+                posterPath: 'posterPath',
+                releaseDate: 'releaseDate',
+                title: 'title',
+                video: false,
+                voteAverage: 7.23,
+                voteCount: 1240,
+              ),
+            ]);
     final result = await movieRepositoryImpl!.fetchPopularMovies();
     expect(result!.isNotEmpty, isTrue);
     expect(result.first.id, 575265);
@@ -70,24 +72,25 @@ void main() {
 
   test('MovieRepositoryImpl test : fetchTopRated', () async {
     // 가짜 클래스 세팅
-    when(() => fakeMovieDataSource!.fetchTopRatedMovies()).thenAnswer(
-      (_) async =>[ MovieResponseDto(
-        adult: false,
-        backdropPath: 'backdropPath',
-        genreIds: [28, 12, 53],
-        id: 575265,
-        originalLanguage: 'originalLanguage',
-        originalTitle: 'originalTitle',
-        overview: 'overview',
-        popularity: 788.7078,
-        posterPath: 'posterPath',
-        releaseDate: DateTime.parse("2025-05-17"),
-        title: 'title',
-        video: false,
-        voteAverage: 7.23,
-        voteCount: 1240,
-      ),]
-    );
+    when(() => fakeMovieDataSource!.fetchTopRatedMovies())
+        .thenAnswer((_) async => [
+              MovieResponseDto(
+                adult: false,
+                backdropPath: 'backdropPath',
+                genreIds: [28, 12, 53],
+                id: 575265,
+                originalLanguage: 'originalLanguage',
+                originalTitle: 'originalTitle',
+                overview: 'overview',
+                popularity: 788.7078,
+                posterPath: 'posterPath',
+                releaseDate: 'releaseDate',
+                title: 'title',
+                video: false,
+                voteAverage: 7.23,
+                voteCount: 1240,
+              ),
+            ]);
     final result = await movieRepositoryImpl!.fetchTopRatedMovies();
     expect(result!.isNotEmpty, isTrue);
     expect(result.first.id, 575265);
@@ -95,25 +98,26 @@ void main() {
 
   test('MovieRepositoryImpl test : fetchUpComing', () async {
     // 가짜 클래스 세팅
-    when(() => fakeMovieDataSource!.fetchUpComingMovies()).thenAnswer(
-      (_) async => [MovieResponseDto(
-        adult: false,
-        backdropPath: 'backdropPath',
-        genreIds: [28, 12, 53],
-        id: 575265,
-        originalLanguage: 'originalLanguage',
-        originalTitle: 'originalTitle',
-        overview: 'overview',
-        popularity: 788.7078,
-        posterPath: 'posterPath',
-        releaseDate: DateTime.parse("2025-05-17"),
-        title: 'title',
-        video: false,
-        voteAverage: 7.23,
-        voteCount: 1240,
-      ),]
-    );
-     final result = await movieRepositoryImpl!.fetchUpComingMovies();
+    when(() => fakeMovieDataSource!.fetchUpComingMovies())
+        .thenAnswer((_) async => [
+              MovieResponseDto(
+                adult: false,
+                backdropPath: 'backdropPath',
+                genreIds: [28, 12, 53],
+                id: 575265,
+                originalLanguage: 'originalLanguage',
+                originalTitle: 'originalTitle',
+                overview: 'overview',
+                popularity: 788.7078,
+                posterPath: 'posterPath',
+                releaseDate: 'releaseDate',
+                title: 'title',
+                video: false,
+                voteAverage: 7.23,
+                voteCount: 1240,
+              ),
+            ]);
+    final result = await movieRepositoryImpl!.fetchUpComingMovies();
     expect(result!.isNotEmpty, isTrue);
     expect(result.first.id, 575265);
   });
@@ -155,7 +159,7 @@ void main() {
             name: 'name',
           ),
         ],
-        releaseDate: DateTime.parse("2025-05-17"),
+        releaseDate: 'releaseDate',
         revenue: 596513515,
         runtime: 170,
         spokenLanguages: [

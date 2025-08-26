@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_app/pages/List/Widgets/popular_list.dart';
-import 'package:flutter_movie_app/pages/List/Widgets/now_playing_list.dart';
-import 'package:flutter_movie_app/pages/List/Widgets/top_rated_list.dart';
-import 'package:flutter_movie_app/pages/List/Widgets/trending_list.dart';
-import 'package:flutter_movie_app/pages/List/Widgets/upcoming_list.dart';
+import 'package:flutter_movie_app/pages/List/widgets/popular_list.dart';
+import 'package:flutter_movie_app/pages/List/widgets/now_playing_list.dart';
+import 'package:flutter_movie_app/pages/List/widgets/top_rated_list.dart';
+import 'package:flutter_movie_app/pages/List/widgets/trending_list.dart';
+import 'package:flutter_movie_app/pages/List/widgets/upcoming_list.dart';
 
 class ListPage extends StatelessWidget {
   @override
